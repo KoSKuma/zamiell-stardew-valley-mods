@@ -34,7 +34,7 @@ namespace VisibleArtifactSpots
                 reset: () => config = new ModConfig(),
                 save: () => this.Helper.WriteConfig(config)
             );
-
+            // Highlighting Configs
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Highlighting Configs",
@@ -49,7 +49,7 @@ namespace VisibleArtifactSpots
                 () => "The way to highlight things.",
                 new string[] { "Border", "Bubble", "Both" }
             );
-
+            // Digspot Options
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Digspot Options",
@@ -71,7 +71,7 @@ namespace VisibleArtifactSpots
                 () => "Seed Spots",
                 () => "Whether to highlight seed spots."
             );
-
+            // Debris Options
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Debris Options",
@@ -101,7 +101,7 @@ namespace VisibleArtifactSpots
                 () => "Stones",
                 () => "Whether to highlight stones."
             );
-
+            // Ore Node Options
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Ore Node Options",
@@ -155,7 +155,132 @@ namespace VisibleArtifactSpots
                 () => "Cinder Nodes",
                 () => "Whether to highlight cinder nodes."
             );
+            // Gem Node Options
+            configMenu.AddSectionTitle(
+                this.ModManifest,
+                () => "Gem Node Options",
+                () => "Options for gem nodes (amethyst, aquamarine, diamond, emerald, jade, ruby, topaz)."
+            );
 
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightAmethystNodes,
+                (bool val) => config.HighlightAmethystNodes = val,
+                () => "Amethyst Nodes",
+                () => "Whether to highlight amethyst nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightAquamarineNodes,
+                (bool val) => config.HighlightAquamarineNodes = val,
+                () => "Aquamarine Nodes",
+                () => "Whether to highlight aquamarine nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightDiamondNodes,
+                (bool val) => config.HighlightDiamondNodes = val,
+                () => "Diamond Nodes",
+                () => "Whether to highlight diamond nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightEmeraldNodes,
+                (bool val) => config.HighlightEmeraldNodes = val,
+                () => "Emerald Nodes",
+                () => "Whether to highlight emerald nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightJadeNodes,
+                (bool val) => config.HighlightJadeNodes = val,
+                () => "Jade Nodes",
+                () => "Whether to highlight jade nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightRubyNodes,
+                (bool val) => config.HighlightRubyNodes = val,
+                () => "Ruby Nodes",
+                () => "Whether to highlight ruby nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightTopazNodes,
+                (bool val) => config.HighlightTopazNodes = val,
+                () => "Topaz Nodes",
+                () => "Whether to highlight topaz nodes."
+            );
+            // Special Mining Node Options
+            configMenu.AddSectionTitle(
+                this.ModManifest,
+                () => "Special Mining Node Options",
+                () => "Options for special mining nodes (geode, gem, mystic stone, bone, clay, coal, calico egg)."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightGeodeNodes,
+                (bool val) => config.HighlightGeodeNodes = val,
+                () => "Geode Nodes",
+                () => "Whether to highlight geode nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightGemNodes,
+                (bool val) => config.HighlightGemNodes = val,
+                () => "Gem Nodes",
+                () => "Whether to highlight gem nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightMysticStoneNodes,
+                (bool val) => config.HighlightMysticStoneNodes = val,
+                () => "Mystic Stone Nodes",
+                () => "Whether to highlight mystic stone nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightBoneNodes,
+                (bool val) => config.HighlightBoneNodes = val,
+                () => "Bone Nodes",
+                () => "Whether to highlight bone nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightClayNodes,
+                (bool val) => config.HighlightClayNodes = val,
+                () => "Clay Nodes",
+                () => "Whether to highlight clay nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightCoalNodes,
+                (bool val) => config.HighlightCoalNodes = val,
+                () => "Coal Nodes",
+                () => "Whether to highlight coal nodes."
+            );
+
+            configMenu.AddBoolOption(
+                this.ModManifest,
+                () => config.HighlightCalicoEggNodes,
+                (bool val) => config.HighlightCalicoEggNodes = val,
+                () => "Calico Egg Nodes",
+                () => "Whether to highlight calico egg nodes."
+            );
+
+            // Farming Options
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Farming Options",
@@ -193,7 +318,7 @@ namespace VisibleArtifactSpots
                 () => "Hoeable Tile",
                 () => "Whether to highlight tiles that are hoeable and are not hoed."
             );
-
+            // Other Options
             configMenu.AddSectionTitle(
                 this.ModManifest,
                 () => "Other Options",
@@ -255,12 +380,32 @@ namespace VisibleArtifactSpots
                 || (obj.Name == "Weeds" && config.HighlightWeeds && !InDungeon())
                 || (obj.Name == "Twig" && config.HighlightTwigs && !InDungeon())
                 || (obj.Name == "Stone" && config.HighlightStones && !InDungeon())
+                // ore nodes
                 || (obj.Name == "Stone" && description.Contains("copper") && config.HighlightCopperNodes)
                 || (obj.Name == "Stone" && description.Contains("iron") && config.HighlightIronNodes)
                 || (obj.Name == "Stone" && description.Contains("gold") && config.HighlightGoldNodes)
                 || (obj.Name == "Stone" && description.Contains("iridium") && config.HighlightIridiumNodes)
                 || (obj.Name == "Stone" && description.Contains("radioactive") && config.HighlightRadioactiveNodes)
                 || (obj.Name == "Stone" && description.Contains("cinder") && config.HighlightCinderNodes)
+                // gem nodes
+                || (obj.Name == "Stone" && description.Contains("amethyst") && config.HighlightAmethystNodes)
+                || (obj.Name == "Stone" && description.Contains("aquamarine") && config.HighlightAquamarineNodes)
+                || (obj.Name == "Stone" && description.Contains("diamond") && config.HighlightDiamondNodes)
+                || (obj.Name == "Stone" && description.Contains("emerald") && config.HighlightEmeraldNodes)
+                || (obj.Name == "Stone" && description.Contains("jade") && config.HighlightJadeNodes)
+                || (obj.Name == "Stone" && description.Contains("ruby") && config.HighlightRubyNodes)
+                || (obj.Name == "Stone" && description.Contains("topaz") && config.HighlightTopazNodes)
+                // special mining nodes
+                // Cannot differentiate gem nodes and mystic nodes by description, so just use item ID.
+                // Also, a lot of mining nodes descriptions contain the word "geode" and "coal", so we cannot use description for those.
+                || (geodeNodeIds.Contains(obj.ItemId) && config.HighlightGeodeNodes)
+                || (obj.ItemId == "44" && config.HighlightGemNodes)
+                || (obj.ItemId == "46" && config.HighlightMysticStoneNodes)
+                || (obj.Name == "Stone" && description.Contains("fossils and bones") && config.HighlightBoneNodes)
+                || (obj.Name == "Stone" && description.Contains("clay") && config.HighlightClayNodes)
+                || (coalNodeIds.Contains(obj.ItemId) && config.HighlightCoalNodes)
+                || (obj.Name == "Stone" && description.Contains("calico egg") && config.HighlightCalicoEggNodes)
+                // miscellaneous
                 || (obj.IsSpawnedObject == true && config.HighlightForageable)
                 || (obj is Chest chest && !chest.playerChest.Value && !IsChestOpened(chest) && InVolcanoDungeon() && config.HighlightChests)
             );
@@ -434,5 +579,21 @@ namespace VisibleArtifactSpots
         {
             this.Monitor.Log(msg, LogLevel.Debug);
         }
+
+        private string[] geodeNodeIds = new string[]
+        {
+            "75", // Geode
+            "76", // Frozen Geode
+            "77", // Magma Geode
+            "819", // Omni Geode
+        };
+
+        private string[] coalNodeIds = new string[]
+        {
+            "BasicCoalNode0",
+            "BasicCoalNode1",
+            "VolcanoCoalNode0",
+            "VolcanoCoalNode0",
+        };
     }
 }
